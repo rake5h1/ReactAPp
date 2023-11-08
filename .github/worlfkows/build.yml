@@ -29,8 +29,11 @@ jobs:
         git config --global user.name rake5h  
         git config --global user.email rakeshkapgate1@gmail.com
         git checkout --orphan gh-pages
-        git add --all
-        git commit --allow-empty -m "Deploying to GitHub Pages"
-        git push -u origin gh-pages --force
+        git --set-upstream-to=origin/main
+        git pull
+        mv build/* .
+        git add .
+        git commit -m "Deploy to GitHub Pages"
+        git push origin gh-pages --force
 
 
